@@ -18,6 +18,10 @@ class detailViewController: UIViewController {
     var getshopphone = String()
     var getshopadress = String()
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         image.image = getimage

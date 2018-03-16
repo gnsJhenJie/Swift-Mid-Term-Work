@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,AddNewItemDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     var ShopName = ["好好吃餐廳","蟹堡王","哈哈衣服","美食廣場？","海之霸"]
     var ShopAdress = ["台南市","比奇堡","高雄市","新北市","比奇堡"]
     var PhoneNumber = ["06-2755920","02-38758787","07-3425555","02-94878794","0800-080-123"]
@@ -42,13 +44,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailSegue"{
         let indexpath : NSIndexPath = tblReminder.indexPathForSelectedRow! as NSIndexPath
         let target = segue.destination as! detailViewController
         target.getimage = caImage[indexpath.row]!
         target.getshopname = ShopName[indexpath.row]
         target.getshopphone = PhoneNumber[indexpath.row]
         target.getshopadress = ShopAdress[indexpath.row]
- 
+        }else if segue.identifier == "addSegue"{
+            let target = segue.destination as! AddViewController
+            target.delegate=self
+        }
+        
+    }
+    func NewItem(name: String, image: UIImage, phone: String, adress: String) {
+        ShopName.append(name)
+        caImage.append(image)
+        PhoneNumber.append(phone)
+        ShopAdress.append(adress)
+        tblReminder.reloadData()
     }
 
 }

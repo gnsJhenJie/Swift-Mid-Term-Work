@@ -12,12 +12,34 @@ protocol AddNewItemDelegate {
     func NewItem (name: String,image: UIImage, phone: String,adress: String)
 }
 
+
+
+
 class AddViewController: UIViewController {
-    
+    @objc func keyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            let keyboardFrame: CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+            let duration: Double = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! Double
+            
+            UIView.animate(withDuration: duration, animations: { () -> Void in
+                var frame = self.view.frame
+                frame.origin.y = keyboardFrame.minY - self.view.frame.height
+                self.view.frame = frame
+            })
+        }
+    }//test
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     var delegate: AddNewItemDelegate!
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil) //test
 
         // Do any additional setup after loading the view.
     }
@@ -32,6 +54,7 @@ class AddViewController: UIViewController {
         let phone = txtPhone.text!
         let adress = txtAdress.text!
         delegate.NewItem(name: name, image: image, phone: phone, adress: adress)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBOutlet weak var txtShopName: UITextField!
