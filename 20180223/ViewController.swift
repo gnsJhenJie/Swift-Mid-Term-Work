@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var ShopName = ["好好吃餐廳","蟹堡王","哈哈衣服","美食廣場？","海之霸"]
     var ShopAdress = ["台南市","比奇堡","高雄市","新北市","比奇堡"]
     var PhoneNumber = ["06-2755920","02-38758787","07-3425555","02-94878794","0800-080-123"]
-    var caImage = [UIImage(named:"food"),UIImage(named:"food"),UIImage(named:"shirt"),UIImage(named:"shirt"),UIImage(named:"food")]
+    var caImage = [#imageLiteral(resourceName: "food"),#imageLiteral(resourceName: "food"),#imageLiteral(resourceName: "shirt"),#imageLiteral(resourceName: "shirt"),#imageLiteral(resourceName: "food")]
     var shopImage =  [#imageLiteral(resourceName: "noImage"),#imageLiteral(resourceName: "蟹堡王"),#imageLiteral(resourceName: "noImage"),#imageLiteral(resourceName: "noImage"),#imageLiteral(resourceName: "海之霸")]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,7 +53,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if segue.identifier == "detailSegue"{
         let indexpath : NSIndexPath = tblReminder.indexPathForSelectedRow! as NSIndexPath
         let target = segue.destination as! detailViewController
-        target.getimage = caImage[indexpath.row]!
+        target.getimage = caImage[indexpath.row]
         target.getshopname = ShopName[indexpath.row]
         target.getshopphone = PhoneNumber[indexpath.row]
         target.getshopadress = ShopAdress[indexpath.row]

@@ -13,8 +13,6 @@ protocol AddNewItemDelegate {
 }
 
 
-
-
 class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     @objc func keyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
@@ -77,8 +75,6 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
         }
         actionSheet.addAction(cancelAction)
         picker.delegate = self
-        //picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        //self.present(picker, animated: true, completion: nil)
         self.present(actionSheet, animated: true, completion: nil)
     }
     
