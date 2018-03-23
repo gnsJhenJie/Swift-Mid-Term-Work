@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var ShopAdress = ["台南市","比奇堡","高雄市","新北市","比奇堡"]
     var PhoneNumber = ["06-2755920","02-38758787","07-3425555","02-94878794","0800-080-123"]
     var caImage = [UIImage(named:"food"),UIImage(named:"food"),UIImage(named:"shirt"),UIImage(named:"shirt"),UIImage(named:"food")]
+    var shopImage =  [#imageLiteral(resourceName: "noImage"),#imageLiteral(resourceName: "蟹堡王"),#imageLiteral(resourceName: "noImage"),#imageLiteral(resourceName: "noImage"),#imageLiteral(resourceName: "海之霸")]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ShopName.count
@@ -37,8 +38,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Do any additional setup after loading the view, typically from a nib.
         tblReminder.dataSource = self
         tblReminder.delegate = self
+        
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        if let index = self.tblReminder.indexPathForSelectedRow{
+            self.tblReminder.deselectRow(at: index, animated: true)
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

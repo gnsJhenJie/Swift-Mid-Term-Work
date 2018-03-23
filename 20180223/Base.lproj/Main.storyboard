@@ -165,7 +165,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shirt" translatesAutoresizingMaskIntoConstraints="NO" id="MDU-Xl-GdB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="MDU-Xl-GdB">
                                 <rect key="frame" x="11" y="114" width="353" height="218"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="218" id="Oef-Oo-Xv4"/>
@@ -183,6 +183,17 @@
                                     <action selector="btnSave:" destination="cQO-Uv-Gs8" eventType="touchUpInside" id="snf-GX-99i"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELb-sy-MFG">
+                                <rect key="frame" x="305" y="334" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="FUC-Qg-Na8"/>
+                                    <constraint firstAttribute="height" constant="40" id="hX0-66-oVV"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="imagePick"/>
+                                <connections>
+                                    <action selector="btnPickImage:" destination="cQO-Uv-Gs8" eventType="touchUpInside" id="Frm-mv-NDj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -198,17 +209,19 @@
                             <constraint firstItem="2f5-5b-hRb" firstAttribute="top" secondItem="OBa-lQ-rRw" secondAttribute="bottom" constant="42" id="LJW-sg-3l9"/>
                             <constraint firstAttribute="trailing" secondItem="MDU-Xl-GdB" secondAttribute="trailing" constant="11" id="N4I-3g-y2s"/>
                             <constraint firstItem="qx2-HF-Zih" firstAttribute="top" secondItem="Y8l-AI-vxK" secondAttribute="bottom" constant="39" id="NBM-e2-oc2"/>
+                            <constraint firstItem="Zk2-GT-0lz" firstAttribute="trailing" secondItem="ELb-sy-MFG" secondAttribute="trailing" constant="30" id="VNh-R0-cQv"/>
                             <constraint firstItem="MDU-Xl-GdB" firstAttribute="top" secondItem="Zk2-GT-0lz" secondAttribute="top" constant="50" id="VXF-AQ-xlQ"/>
                             <constraint firstItem="Y8l-AI-vxK" firstAttribute="leading" secondItem="Zk2-GT-0lz" secondAttribute="leading" constant="25" id="cXK-mZ-bWI"/>
                             <constraint firstItem="2f5-5b-hRb" firstAttribute="leading" secondItem="oLU-8l-ubO" secondAttribute="trailing" constant="33.5" id="hpY-gN-hRt"/>
                             <constraint firstItem="4fg-yK-OOO" firstAttribute="leading" secondItem="Y8l-AI-vxK" secondAttribute="trailing" constant="33.5" id="htZ-PD-eRw"/>
                             <constraint firstItem="E2P-E8-YVn" firstAttribute="top" secondItem="2f5-5b-hRb" secondAttribute="bottom" constant="28" id="jCe-lp-dEZ"/>
+                            <constraint firstItem="ELb-sy-MFG" firstAttribute="top" secondItem="Zk2-GT-0lz" secondAttribute="top" constant="270" id="xqk-5N-Rce"/>
                             <constraint firstItem="Y8l-AI-vxK" firstAttribute="top" secondItem="MDU-Xl-GdB" secondAttribute="bottom" constant="55" id="yab-FI-jTv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zk2-GT-0lz"/>
                     </view>
                     <connections>
-                        <outlet property="image" destination="MDU-Xl-GdB" id="XgB-pi-v8L"/>
+                        <outlet property="imageViewer" destination="MDU-Xl-GdB" id="XgB-pi-v8L"/>
                         <outlet property="txtAdress" destination="2f5-5b-hRb" id="zam-D3-aqe"/>
                         <outlet property="txtPhone" destination="OBa-lQ-rRw" id="sou-NE-94U"/>
                         <outlet property="txtShopName" destination="4fg-yK-OOO" id="Rxq-IJ-5NI"/>
@@ -216,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hpb-Gf-Hc5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="517.60000000000002" y="229.83508245877064"/>
+            <point key="canvasLocation" x="1168.8" y="-467.3163418290855"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="0Pb-2X-VPc">
@@ -255,7 +268,6 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="eLK-ii-mf1"/>
                                     <constraint firstAttribute="height" constant="211" id="pUE-21-WDe"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="211" id="wS6-lu-crC"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="餐廳名稱" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpT-z0-qnz">
@@ -268,8 +280,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="電話" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmJ-VI-yAC">
-                                <rect key="frame" x="16" y="413" width="79" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="電話" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmJ-VI-yAC">
+                                <rect key="frame" x="16" y="409" width="79" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="79" id="XOH-ig-hmJ"/>
                                     <constraint firstAttribute="height" constant="34" id="xcA-d4-DEF"/>
@@ -343,6 +355,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="imagePick" width="1000" height="1000"/>
+        <image name="noImage" width="1024" height="768"/>
         <image name="shirt" width="512" height="512"/>
     </resources>
 </document>

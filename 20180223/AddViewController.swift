@@ -15,7 +15,7 @@ protocol AddNewItemDelegate {
 
 
 
-class AddViewController: UIViewController {
+class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     @objc func keyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             let keyboardFrame: CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
@@ -50,17 +50,48 @@ class AddViewController: UIViewController {
     }
     @IBAction func btnSave(_ sender: UIButton) {
         let name = txtShopName.text!
-        let image = #imageLiteral(resourceName: "shirt")
+        let image = imageViewer.image!
         let phone = txtPhone.text!
         let adress = txtAdress.text!
         delegate.NewItem(name: name, image: image, phone: phone, adress: adress)
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func btnPickImage(_ sender: UIButton) {
+        let picker = UIImagePickerController()
+        let actionSheet = UIAlertController(title: nil,message: nil, preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "拍照", style: .default){ action in
+            picker.sourceType = .camera
+            self.present(picker, animated: true, completion: nil)
+        }
+        actionSheet.addAction(cameraAction)
+        
+        let libraryAction = UIAlertAction(title: "從圖片庫", style: .default){ action in
+            picker.sourceType = .photoLibrary
+            self.present(picker, animated: true, completion: nil)
+        }
+        actionSheet.addAction(libraryAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ action in
+        }
+        actionSheet.addAction(cancelAction)
+        picker.delegate = self
+        //picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        //self.present(picker, animated: true, completion: nil)
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let imagePicked = info["UIImagePickerControllerOriginalImage"] as! UIImage
+        imageViewer.image = imagePicked
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBOutlet weak var txtShopName: UITextField!
     @IBOutlet weak var txtPhone: UITextField!
     @IBOutlet weak var txtAdress: UITextField!
-    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var imageViewer: UIImageView!
     
     /*
     // MARK: - Navigation
