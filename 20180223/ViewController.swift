@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,AddNewItemDelegate {
+
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -63,12 +65,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
     }
-    func NewItem(name: String, image: UIImage, phone: String, adress: String) {
+    func NewItem(name: String, image: UIImage, phone: String, adress: String,caimage: UIImage) {
         ShopName.append(name)
-        caImage.append(image)
+        shopImage.append(image)
         PhoneNumber.append(phone)
         ShopAdress.append(adress)
+        caImage.append(caimage)
         tblReminder.reloadData()
+    }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = deleteThisCell(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    func deleteThisCell(at indexPath: IndexPath) -> UIContextualAction{
+        let action = UIContextualAction(style: .destructive, title: "刪除") { (action, view, completion) in
+            self.ShopName.remove(at: indexPath.row)
+            self.ShopAdress.remove(at: indexPath.row)
+            self.PhoneNumber.remove(at: indexPath.row)
+            self.caImage.remove(at: indexPath.row)
+            self.shopImage.remove(at: indexPath.row)
+            self.tblReminder.reloadData()
+        }
+        action.backgroundColor = .red
+        return action
     }
 
 }

@@ -28,7 +28,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellReminder" rowHeight="142" id="fpp-BM-tJe" customClass="ShopsTableViewCell" customModule="_0180223" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellReminder" rowHeight="142" id="fpp-BM-tJe" customClass="ShopsTableViewCell" customModule="_0180223" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="142"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fpp-BM-tJe" id="LtN-Re-ZXH">
@@ -252,6 +252,7 @@
                         <viewLayoutGuide key="safeArea" id="Zk2-GT-0lz"/>
                     </view>
                     <connections>
+                        <outlet property="catPicker" destination="dRB-UG-B1O" id="nEi-zv-CWX"/>
                         <outlet property="imageViewer" destination="MDU-Xl-GdB" id="XgB-pi-v8L"/>
                         <outlet property="txtAdress" destination="2f5-5b-hRb" id="zam-D3-aqe"/>
                         <outlet property="txtPhone" destination="OBa-lQ-rRw" id="sou-NE-94U"/>

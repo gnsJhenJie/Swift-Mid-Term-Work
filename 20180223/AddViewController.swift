@@ -13,7 +13,8 @@ protocol AddNewItemDelegate {
 }
 
 
-class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource {
+    var cat = ["餐廳","服飾店"]
     @objc func keyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             let keyboardFrame: CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
@@ -30,15 +31,36 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
         NotificationCenter.default.removeObserver(self)
     }
     var delegate: AddNewItemDelegate!
-    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return cat.count
+    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    /*func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return 50.0
+    }
+    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat{
+        return 20.0
+    }*/
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let pickerLabel = UILabel()
+        if component == 0 {
+           pickerLabel.text = cat[row]
+        }
+        pickerLabel.font = UIFont(name: "System", size: 15)
+        pickerLabel.textAlignment = NSTextAlignment.center
+        return pickerLabel
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil) //test
-
+        catPicker.delegate = self
+        catPicker.dataSource = self
         // Do any additional setup after loading the view.
     }
 
@@ -46,12 +68,14 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    var caImage = [#imageLiteral(resourceName: "food"),#imageLiteral(resourceName: "shirt")]
     @IBAction func btnSave(_ sender: UIButton) {
         let name = txtShopName.text!
         let image = imageViewer.image!
         let phone = txtPhone.text!
         let adress = txtAdress.text!
-        delegate.NewItem(name: name, image: image, phone: phone, adress: adress)
+        let caimage = caImage[catPicker.selectedRow(inComponent: 0)]
+        delegate.NewItem(name: name, image: image, phone: phone, adress: adress,caimage: caimage)
         navigationController?.popViewController(animated: true)
     }
     
@@ -84,6 +108,7 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBOutlet weak var catPicker: UIPickerView!
     @IBOutlet weak var txtShopName: UITextField!
     @IBOutlet weak var txtPhone: UITextField!
     @IBOutlet weak var txtAdress: UITextField!
