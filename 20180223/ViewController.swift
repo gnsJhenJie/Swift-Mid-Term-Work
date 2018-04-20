@@ -65,12 +65,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
     }
-    func NewItem(name: String, image: UIImage, phone: String, adress: String,caimage: UIImage) {
+    func NewItem(name: String, image: UIImage, phone: String, adress: String) {
         ShopName.append(name)
         shopImage.append(image)
         PhoneNumber.append(phone)
         ShopAdress.append(adress)
-        caImage.append(caimage)
+        //caImage.append(caimage)
         tblReminder.reloadData()
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

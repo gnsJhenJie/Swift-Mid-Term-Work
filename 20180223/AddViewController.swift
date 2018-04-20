@@ -74,8 +74,8 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
         let image = imageViewer.image!
         let phone = txtPhone.text!
         let adress = txtAdress.text!
-        let caimage = caImage[catPicker.selectedRow(inComponent: 0)]
-        delegate.NewItem(name: name, image: image, phone: phone, adress: adress,caimage: caimage)
+        //let caimage = caImage[catPicker.selectedRow(inComponent: 0)]
+        delegate.NewItem(name: name, image: image, phone: phone, adress: adress)
         navigationController?.popViewController(animated: true)
     }
     
