@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3F2EE5EB205B495D000BB9D7 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2EE5EA205B495D000BB9D7 /* AddViewController.swift */; };
 		3F57C2DB2052138000496D39 /* detailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F57C2DA2052138000496D39 /* detailViewController.swift */; };
+		3F7387082089738B00B85F09 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7387072089738B00B85F09 /* Shop.swift */; };
 		3F7A0429203F9AD3001DE4FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7A0428203F9AD3001DE4FC /* AppDelegate.swift */; };
 		3F7A042B203F9AD3001DE4FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7A042A203F9AD3001DE4FC /* ViewController.swift */; };
 		3F7A042E203F9AD3001DE4FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7A042C203F9AD3001DE4FC /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		3F2EE5EA205B495D000BB9D7 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		3F57C2DA2052138000496D39 /* detailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailViewController.swift; sourceTree = "<group>"; };
+		3F7387072089738B00B85F09 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		3F7A0425203F9AD2001DE4FC /* 20180223.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 20180223.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7A0428203F9AD3001DE4FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F7A042A203F9AD3001DE4FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
@@ -63,6 +65,7 @@
 				3F7A0428203F9AD3001DE4FC /* AppDelegate.swift */,
 				3FF6EAFA2048DB8E00F6A2A8 /* ShopsTableViewCell.swift */,
 				3F7A042A203F9AD3001DE4FC /* ViewController.swift */,
+				3F7387072089738B00B85F09 /* Shop.swift */,
 				3F7A042C203F9AD3001DE4FC /* Main.storyboard */,
 				3F2EE5EA205B495D000BB9D7 /* AddViewController.swift */,
 				3F57C2DA2052138000496D39 /* detailViewController.swift */,
@@ -148,6 +151,7 @@
 				3F2EE5EB205B495D000BB9D7 /* AddViewController.swift in Sources */,
 				3F7A042B203F9AD3001DE4FC /* ViewController.swift in Sources */,
 				3F7A0429203F9AD3001DE4FC /* AppDelegate.swift in Sources */,
+				3F7387082089738B00B85F09 /* Shop.swift in Sources */,
 				3FF6EAFB2048DB8E00F6A2A8 /* ShopsTableViewCell.swift in Sources */,
 				3F57C2DB2052138000496D39 /* detailViewController.swift in Sources */,
 			);

@@ -100,6 +100,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="1vk-IA-lLr" id="jpe-pn-TSN"/>
                         <outlet property="tblReminder" destination="ci0-fV-vRq" id="oys-qi-kBQ"/>
                     </connections>
                 </viewController>
