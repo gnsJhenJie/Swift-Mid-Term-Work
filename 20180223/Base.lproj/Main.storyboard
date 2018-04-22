@@ -477,9 +477,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rQb-JP-d3O"/>
                     </view>
-                    <navigationItem key="navigationItem" title="詳細資料" id="Age-Z6-fCl">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="edit" id="SIi-63-mjQ"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="詳細資料" id="Age-Z6-fCl"/>
                     <connections>
                         <outlet property="image" destination="tsO-HJ-4H1" id="6Qj-Ha-LNl"/>
                         <outlet property="labShopAdress" destination="hjC-u5-COi" id="Nu6-5g-SSv"/>
