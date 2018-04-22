@@ -36,7 +36,12 @@ class detailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func btnCall(_ sender: UIButton) {
+        let url = NSURL( string: "tel://"+getshopphone)
+        UIApplication.shared.openURL(url! as URL)
+    }
+    
+    
     /*
     // MARK: - Navigation
 

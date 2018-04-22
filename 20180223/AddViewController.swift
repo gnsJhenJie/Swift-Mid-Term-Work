@@ -14,7 +14,7 @@ protocol AddNewItemDelegate {
 
 
 class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource {
-    var cat = ["餐廳","服飾店"]
+    var cat = ["餐廳","服飾店","3C用品","影印店","飲料店"]
     @objc func keyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             let keyboardFrame: CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
@@ -68,7 +68,7 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    var caImage = [#imageLiteral(resourceName: "food"),#imageLiteral(resourceName: "shirt")]
+    var caImage = [#imageLiteral(resourceName: "food"),#imageLiteral(resourceName: "shirt"),#imageLiteral(resourceName: "tablet"),#imageLiteral(resourceName: "printer"),#imageLiteral(resourceName: "latte")]
     @IBAction func btnSave(_ sender: UIButton) {
         let name = txtShopName.text!
         let image = imageViewer.image!
