@@ -16,17 +16,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.view.endEditing(true)
     }
     var shops = [Shop]()
-    
+    var filtedShops = [Shop]()
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shops.count
+        return filtedShops.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tblReminder.dequeueReusableCell(withIdentifier: "cellReminder") as! ShopsTableViewCell
-        cell.Title?.text = shops[indexPath.row].name
-        cell.Adress?.text = shops[indexPath.row].adress
-        cell.caImage?.image = shops[indexPath.row].caImage
+        cell.Title?.text = filtedShops[indexPath.row].name
+        cell.Adress?.text = filtedShops[indexPath.row].adress
+        cell.caImage?.image = filtedShops[indexPath.row].caImage
         
         return cell
     }
@@ -39,13 +39,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Do any additional setup after loading the view, typically from a nib.
         tblReminder.dataSource = self
         tblReminder.delegate = self
+        searchBar.delegate = self
         shops.append(Shop(name: "好好吃餐廳", adress: "台南市", phoneNumber: "06-2755920", shopImage: #imageLiteral(resourceName: "noImage"), caImage: #imageLiteral(resourceName: "food")))
         shops.append(Shop(name: "蟹堡王", adress: "比奇堡", phoneNumber: "02-38758787", shopImage: #imageLiteral(resourceName: "蟹堡王"), caImage: #imageLiteral(resourceName: "food")))
-        shops.append(Shop(name: "哈哈衣服", adress: "高雄市", phoneNumber: "07-3425555", shopImage: #imageLiteral(resourceName: "noImage"), caImage: #imageLiteral(resourceName: "noImage")))
+        shops.append(Shop(name: "哈哈衣服", adress: "高雄市", phoneNumber: "07-3425555", shopImage: #imageLiteral(resourceName: "noImage"), caImage: #imageLiteral(resourceName: "shirt")))
         shops.append(Shop(name: "美食廣場？", adress: "新北市", phoneNumber: "02-94878794", shopImage: #imageLiteral(resourceName: "noImage"), caImage: #imageLiteral(resourceName: "food")))
         shops.append(Shop(name: "海之霸", adress: "比奇堡", phoneNumber: "0800-080-123", shopImage: #imageLiteral(resourceName: "海之霸"), caImage: #imageLiteral(resourceName: "food")))
 
-        
+        filtedShops = shops
     }
     override func viewWillAppear(_ animated: Bool) {
         if let index = self.tblReminder.indexPathForSelectedRow{
@@ -60,10 +61,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if segue.identifier == "detailSegue"{
         let indexpath : NSIndexPath = tblReminder.indexPathForSelectedRow! as NSIndexPath
         let target = segue.destination as! detailViewController
-        target.getimage = shops[indexpath.row].shopImage
-        target.getshopname = shops[indexpath.row].name
-        target.getshopphone = shops[indexpath.row].phoneNumber
-        target.getshopadress = shops[indexpath.row].adress
+        target.getimage = filtedShops[indexpath.row].shopImage
+        target.getshopname = filtedShops[indexpath.row].name
+        target.getshopphone = filtedShops[indexpath.row].phoneNumber
+        target.getshopadress = filtedShops[indexpath.row].adress
         }else if segue.identifier == "addSegue"{
             let target = segue.destination as! AddViewController
             target.delegate=self
@@ -72,6 +73,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     func NewItem(name: String, image: UIImage, phone: String, adress: String, caimage: UIImage) {
         self.shops.append(Shop(name: name, adress: adress, phoneNumber: phone, shopImage: image, caImage: caimage))
+        self.filtedShops = self.shops
         tblReminder.reloadData()
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -81,10 +83,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func deleteThisCell(at indexPath: IndexPath) -> UIContextualAction{
         let action = UIContextualAction(style: .destructive, title: "刪除") { (action, view, completion) in
             self.shops.remove(at: indexPath.row)
+            self.filtedShops = self.shops
             self.tblReminder.reloadData()
         }
         action.backgroundColor = .red
         return action
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == ""{
+            self.filtedShops = self.shops
+        }else{
+            self.filtedShops = self.shops.filter({
+                $0.name.contains(searchText)
+            })
+        }
+        tblReminder.reloadData()
     }
 
 }

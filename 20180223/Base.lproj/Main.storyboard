@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rZv-yy-aP3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rZv-yy-aP3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -108,7 +108,7 @@
             </objects>
             <point key="canvasLocation" x="-348" y="-143.47826086956522"/>
         </scene>
-        <!--Add View Controller-->
+        <!--新增-->
         <scene sceneID="n28-BV-2B4">
             <objects>
                 <viewController id="cQO-Uv-Gs8" customClass="AddViewController" customModule="_0180223" customModuleProvider="target" sceneMemberID="viewController">
@@ -116,8 +116,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="餐廳名稱" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8l-AI-vxK">
-                                <rect key="frame" x="25" y="367" width="73.5" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商店名稱" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8l-AI-vxK">
+                                <rect key="frame" x="24.5" y="367" width="74" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="PnC-Rw-knN"/>
                                     <constraint firstAttribute="width" constant="73.5" id="h49-I2-L9E"/>
@@ -252,6 +252,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zk2-GT-0lz"/>
                     </view>
+                    <navigationItem key="navigationItem" title="新增" id="x9B-6Q-waE"/>
                     <connections>
                         <outlet property="catPicker" destination="dRB-UG-B1O" id="nEi-zv-CWX"/>
                         <outlet property="imageViewer" destination="MDU-Xl-GdB" id="XgB-pi-v8L"/>
@@ -264,7 +265,7 @@
             </objects>
             <point key="canvasLocation" x="517.60000000000002" y="223.53823088455775"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--詳細資料-->
         <scene sceneID="0Pb-2X-VPc">
             <objects>
                 <viewController id="Oep-lD-vjm" customClass="detailViewController" customModule="_0180223" customModuleProvider="target" sceneMemberID="viewController">
@@ -303,7 +304,7 @@
                                     <constraint firstAttribute="height" constant="211" id="pUE-21-WDe"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="餐廳名稱" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpT-z0-qnz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商店名稱" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpT-z0-qnz">
                                 <rect key="frame" x="16" y="349" width="79" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="79" id="AXv-RQ-B5z"/>
@@ -357,6 +358,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rQb-JP-d3O"/>
                     </view>
+                    <navigationItem key="navigationItem" title="詳細資料" id="Age-Z6-fCl">
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="edit" id="SIi-63-mjQ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="image" destination="tsO-HJ-4H1" id="6Qj-Ha-LNl"/>
                         <outlet property="labShopAdress" destination="hjC-u5-COi" id="Nu6-5g-SSv"/>
@@ -367,6 +371,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DNs-G1-Atb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="519" y="-467"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2Ys-SK-iVO">
+            <objects>
+                <viewController id="ZvK-7l-uiG" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q0i-NG-puO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="dyc-wi-JEZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aov-KK-gAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1230" y="-467"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JKw-JG-bc4">
