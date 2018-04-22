@@ -10,9 +10,10 @@ import UIKit
 
 class AboutViewController: UIViewController {
 
+    @IBOutlet weak var myGifView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        myGifView.loadGif(name: "小白人4")
         // Do any additional setup after loading the view.
     }
 
@@ -20,9 +21,34 @@ class AboutViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBOutlet weak var GIFview: UIImageView!
+    @IBAction func btnName(_ sender: UIButton) {
+        let url = NSURL( string: "https://www.github.com/gnsJhenJie")
+        UIApplication.shared.openURL(url! as URL)
+    }
+    @IBAction func btnEmail(_ sender: UIButton) {
+        let url = NSURL( string: "mailto:gnsjhenjie@gnsjhenjie.me")
+        UIApplication.shared.openURL(url! as URL)
+    }
+    @IBAction func btnTNFacebook(_ sender: Any) {
+        let facebookUID = "318300822007799"
+        let fbURLWeb: NSURL = NSURL(string: "https://www.facebook.com/\(facebookUID)")!
+        let fbURLID: NSURL = NSURL(string: "facebook://profile/\(facebookUID)")!
+        
+        if(UIApplication.shared.canOpenURL(fbURLID as URL)){
+            // FB installed
+            UIApplication.shared.openURL(fbURLID as URL)
+        } else {
+            // FB is not installed, open in safari
+            UIApplication.shared.openURL(fbURLWeb as URL)
+        }
+        //let url = NSURL( string: "https://bit.ly/2vGgzdg")
+        //UIApplication.shared.openURL(url! as URL)
+    }
+    @IBAction func btnFlatIcon(_ sender: UIButton) {
+        let url = NSURL( string: "https://www.flaticon.com/")
+        UIApplication.shared.openURL(url! as URL)
+    }
     
-
     /*
     // MARK: - Navigation
 

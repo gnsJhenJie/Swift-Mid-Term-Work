@@ -181,7 +181,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noimage" translatesAutoresizingMaskIntoConstraints="NO" id="MDU-Xl-GdB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="MDU-Xl-GdB">
                                 <rect key="frame" x="11" y="94" width="353" height="218"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="218" id="Oef-Oo-Xv4"/>
@@ -270,7 +270,7 @@
             </objects>
             <point key="canvasLocation" x="517.60000000000002" y="223.53823088455775"/>
         </scene>
-        <!--About View Controller-->
+        <!--About-->
         <scene sceneID="10x-kq-jSI">
             <objects>
                 <viewController id="XfT-03-v9T" customClass="AboutViewController" customModule="_0180223" customModuleProvider="target" sceneMemberID="viewController">
@@ -299,6 +299,9 @@
                                 <state key="normal" title="2018臺南高校聯盟">
                                     <color key="titleColor" red="0.20181138811149735" green="1" blue="0.32690362224861891" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnTNFacebook:" destination="XfT-03-v9T" eventType="touchUpInside" id="XED-wN-B1o"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="icon來源：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kyp-T6-Qho">
                                 <rect key="frame" x="62" y="638" width="85" height="21"/>
@@ -314,6 +317,9 @@
                                 <state key="normal" title="Flat icon">
                                     <color key="titleColor" red="1" green="0.48770331266048661" blue="0.46950332952731066" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnFlatIcon:" destination="XfT-03-v9T" eventType="touchUpInside" id="9pb-WK-0Vf"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYt-kY-RpS">
                                 <rect key="frame" x="62" y="410" width="66" height="35"/>
@@ -326,6 +332,9 @@
                                 <rect key="frame" x="136" y="410" width="191" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="gnsjhenjie@gnsjhenjie.me"/>
+                                <connections>
+                                    <action selector="btnEmail:" destination="XfT-03-v9T" eventType="touchUpInside" id="K3z-gW-YuR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z7h-jR-8GH">
                                 <rect key="frame" x="136" y="358" width="140" height="30"/>
@@ -333,6 +342,9 @@
                                 <state key="normal" title="gnsJhenJie">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnName:" destination="XfT-03-v9T" eventType="touchUpInside" id="DVR-IA-TBi"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WPm-IY-sdH">
                                 <rect key="frame" x="87" y="104" width="200" height="200"/>
@@ -349,8 +361,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qfQ-0z-vTC"/>
                     </view>
+                    <navigationItem key="navigationItem" title="About" id="Agm-Qp-fpC"/>
                     <connections>
-                        <outlet property="GIFview" destination="WPm-IY-sdH" id="MbC-3o-pKw"/>
+                        <outlet property="myGifView" destination="WPm-IY-sdH" id="NEe-ht-OkP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="meD-zb-bdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -499,7 +512,7 @@
     </scenes>
     <resources>
         <image name="imagePick" width="1000" height="1000"/>
-        <image name="noimage" width="2000" height="2000"/>
+        <image name="noImage" width="2000" height="2000"/>
         <image name="shirt" width="512" height="512"/>
     </resources>
 </document>
