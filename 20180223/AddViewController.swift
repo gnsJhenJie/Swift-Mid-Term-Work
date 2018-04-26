@@ -26,7 +26,7 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
                 self.view.frame = frame
             })
         }
-    }//test
+    }
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
