@@ -11,10 +11,11 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,AddNewItemDelegate,UISearchBarDelegate {
 
 
-    //Screen go up when keyboard show up
+    //當鍵盤跳出時畫面上推
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
     var shops = [Shop]()
     var filtedShops = [Shop]()
 
@@ -23,7 +24,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tblReminder.dequeueReusableCell(withIdentifier: "cellReminder") as! ShopsTableViewCell
+        let cell = tblShop.dequeueReusableCell(withIdentifier: "cellReminder") as! ShopsTableViewCell
         cell.Title?.text = filtedShops[indexPath.row].name
         cell.Adress?.text = filtedShops[indexPath.row].adress
         cell.caImage?.image = filtedShops[indexPath.row].caImage
@@ -31,14 +32,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-    @IBOutlet weak var tblReminder: UITableView!
+    @IBOutlet weak var tblShop: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        tblReminder.dataSource = self
-        tblReminder.delegate = self
+        tblShop.dataSource = self
+        tblShop.delegate = self
         searchBar.delegate = self
         shops.append(Shop(name: "瑪莎羅芙咖啡館", adress: "台南市東區大學路西段53號3樓", phoneNumber: "06-275-9318", shopImage: #imageLiteral(resourceName: "瑪莎羅芙咖啡館"), caImage: #imageLiteral(resourceName: "food")))
         shops.append(Shop(name: "弘揚日式餐館(井丸)", adress: "台南市東區大學路18巷15-3號一樓", phoneNumber: "0985-896-519", shopImage: #imageLiteral(resourceName: "弘陽日式餐館 丼丸"), caImage: #imageLiteral(resourceName: "food")))
@@ -63,18 +64,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         filtedShops = shops
     }
+    //讓被選中的row從灰色變回白色
     override func viewWillAppear(_ animated: Bool) {
-        if let index = self.tblReminder.indexPathForSelectedRow{
-            self.tblReminder.deselectRow(at: index, animated: true)
+        if let index = self.tblShop.indexPathForSelectedRow{
+            self.tblShop.deselectRow(at: index, animated: true)
         }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    //傳資料到另一個view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailSegue"{
-        let indexpath : NSIndexPath = tblReminder.indexPathForSelectedRow! as NSIndexPath
+        let indexpath : NSIndexPath = tblShop.indexPathForSelectedRow! as NSIndexPath
         let target = segue.destination as! detailViewController
         target.getimage = filtedShops[indexpath.row].shopImage
         target.getshopname = filtedShops[indexpath.row].name
@@ -86,24 +89,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
     }
+    //新增資料到陣列FUNCTION
     func NewItem(name: String, image: UIImage, phone: String, adress: String, caimage: UIImage) {
         self.shops.append(Shop(name: name, adress: adress, phoneNumber: phone, shopImage: image, caImage: caimage))
         self.filtedShops = self.shops
-        tblReminder.reloadData()
+        tblShop.reloadData()
     }
+    //tableview刪資料
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = deleteThisCell(at: indexPath)
         return UISwipeActionsConfiguration(actions: [delete])
     }
+    //刪資料function
     func deleteThisCell(at indexPath: IndexPath) -> UIContextualAction{
         let action = UIContextualAction(style: .destructive, title: "刪除") { (action, view, completion) in
             self.shops.remove(at: indexPath.row)
             self.filtedShops = self.shops
-            self.tblReminder.reloadData()
+            self.tblShop.reloadData()
         }
         action.backgroundColor = .red
         return action
     }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == ""{
             self.filtedShops = self.shops
@@ -112,7 +119,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 $0.name.contains(searchText)
             })
         }
-        tblReminder.reloadData()
+        tblShop.reloadData()
     }
 
 }

@@ -15,6 +15,8 @@ protocol AddNewItemDelegate {
 
 class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDelegate,UIPickerViewDataSource {
     var cat = ["餐廳","服飾店","3C用品","影印店","飲料店"]
+    var caImage = [#imageLiteral(resourceName: "food"),#imageLiteral(resourceName: "shirt"),#imageLiteral(resourceName: "tablet"),#imageLiteral(resourceName: "printer"),#imageLiteral(resourceName: "latte")]
+
     @objc func keyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             let keyboardFrame: CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
@@ -30,19 +32,15 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
     var delegate: AddNewItemDelegate!
+    //PickerView
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return cat.count
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    /*func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        return 50.0
-    }
-    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat{
-        return 20.0
-    }*/
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
         if component == 0 {
@@ -52,6 +50,7 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
         pickerLabel.textAlignment = NSTextAlignment.center
         return pickerLabel
     }
+    //endEditing
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -68,7 +67,6 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    var caImage = [#imageLiteral(resourceName: "food"),#imageLiteral(resourceName: "shirt"),#imageLiteral(resourceName: "tablet"),#imageLiteral(resourceName: "printer"),#imageLiteral(resourceName: "latte")]
     @IBAction func btnSave(_ sender: UIButton) {
         let name = txtShopName.text!
         let image = imageViewer.image!
@@ -78,7 +76,7 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
         delegate.NewItem(name: name, image: image, phone: phone, adress: adress, caimage: caimage)
         navigationController?.popViewController(animated: true)
     }
-    
+    //選照片
     @IBAction func btnPickImage(_ sender: UIButton) {
         let picker = UIImagePickerController()
         let actionSheet = UIAlertController(title: nil,message: nil, preferredStyle: .actionSheet)
@@ -101,7 +99,6 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
         picker.delegate = self
         self.present(actionSheet, animated: true, completion: nil)
     }
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let imagePicked = info["UIImagePickerControllerOriginalImage"] as! UIImage
         imageViewer.image = imagePicked

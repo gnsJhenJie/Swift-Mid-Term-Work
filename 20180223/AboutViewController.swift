@@ -13,7 +13,7 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var myGifView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        myGifView.loadGif(name: "小白人4")
+        myGifView.loadGif(name: "小白人4") //load gif
         // Do any additional setup after loading the view.
     }
 
@@ -32,7 +32,7 @@ class AboutViewController: UIViewController {
     @IBAction func btnTNFacebook(_ sender: Any) {
         let facebookUID = "318300822007799"
         let fbURLWeb: NSURL = NSURL(string: "https://www.facebook.com/\(facebookUID)")!
-        let fbURLID: NSURL = NSURL(string: "facebook://profile/\(facebookUID)")!
+        let fbURLID: NSURL = NSURL(string: "fb://profile/\(facebookUID)")!
         
         if(UIApplication.shared.canOpenURL(fbURLID as URL)){
             // FB installed
