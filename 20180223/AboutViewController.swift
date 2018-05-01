@@ -22,31 +22,36 @@ class AboutViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func btnName(_ sender: UIButton) {
-        let url = NSURL( string: "https://www.github.com/gnsJhenJie")
-        UIApplication.shared.openURL(url! as URL)
+        let url = URL( string: "https://www.github.com/gnsJhenJie")
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        //UIApplication.shared.openURL(url! as URL)
     }
     @IBAction func btnEmail(_ sender: UIButton) {
-        let url = NSURL( string: "mailto:gnsjhenjie@gnsjhenjie.me")
-        UIApplication.shared.openURL(url! as URL)
+        let url = URL( string: "mailto:gnsjhenjie@gnsjhenjie.me")
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        //UIApplication.shared.openURL(url! as URL)
     }
     @IBAction func btnTNFacebook(_ sender: Any) {
         let facebookUID = "318300822007799"
-        let fbURLWeb: NSURL = NSURL(string: "https://www.facebook.com/\(facebookUID)")!
-        let fbURLID: NSURL = NSURL(string: "fb://profile/\(facebookUID)")!
+        let fbURLWeb = URL(string: "https://www.facebook.com/\(facebookUID)")!
+        let fbURLID = URL(string: "fb://profile/\(facebookUID)")!
         
         if(UIApplication.shared.canOpenURL(fbURLID as URL)){
             // FB installed
-            UIApplication.shared.openURL(fbURLID as URL)
+            UIApplication.shared.open(fbURLID, options: [:], completionHandler: nil)
+            //UIApplication.shared.openURL(fbURLID as URL)
         } else {
             // FB is not installed, open in safari
-            UIApplication.shared.openURL(fbURLWeb as URL)
+            UIApplication.shared.open(fbURLWeb, options: [:], completionHandler: nil)
+            //UIApplication.shared.openURL(fbURLWeb as URL)
         }
         //let url = NSURL( string: "https://bit.ly/2vGgzdg")
         //UIApplication.shared.openURL(url! as URL)
     }
     @IBAction func btnFlatIcon(_ sender: UIButton) {
-        let url = NSURL( string: "https://www.flaticon.com/")
-        UIApplication.shared.openURL(url! as URL)
+        let url = URL( string: "https://www.flaticon.com/")
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        //UIApplication.shared.openURL(url! as URL)
     }
     
     /*
