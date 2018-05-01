@@ -61,6 +61,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         shops.append(Shop(name: "馬雅影印", adress: "台南市東區勝利路137號", phoneNumber: "06-236-6137", shopImage:#imageLiteral(resourceName: "馬雅影印"), caImage: #imageLiteral(resourceName: "printer")))
         shops.append(Shop(name: "Hot!手工窯烤披薩", adress: "台南市東區勝利路52巷1號", phoneNumber: "06-238-7588", shopImage:#imageLiteral(resourceName: "Hot!手工窯烤披薩"), caImage: #imageLiteral(resourceName: "food")))
 
+        
 
         filtedShops = shops
     }
