@@ -117,7 +117,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.filtedShops = self.shops
         }else{
             self.filtedShops = self.shops.filter({
-                $0.name.contains(searchText)
+                $0.name.contains(searchText)  //search the shop name
             })
         }
         tblShop.reloadData()
